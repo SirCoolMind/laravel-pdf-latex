@@ -58,12 +58,21 @@ class Latex
     private $nameInsideZip;
 
     /**
+     * Number of times to render
+     *
+     * @var int
+     */
+    private $renderCount;
+
+    /**
      * Construct the instance
      *
      * @param string $stubPath
      * @param mixed $metadata
+     * @param string $pdflatexPath
+     * @param int $renderCount
      */
-    public function __construct($stubPath = null, $metadata = null, $pdflatexPath = 'pdflatex')
+    public function __construct($stubPath = null, $metadata = null, $pdflatexPath = 'pdflatex', $renderCount = 1)
     {
         if (!in_array(PHP_OS_FAMILY, ['Linux'])){
             throw new LatextException("Unsupported Operating System");
@@ -86,6 +95,8 @@ class Latex
         }
         
         $this->metadata = $metadata;
+
+        $this->renderCount = $renderCount;
     }
 
     /**
@@ -240,13 +251,16 @@ class Latex
 
         $program    = $this->binPath ? $this->binPath : 'pdflatex';
         $cmd        = "$program -output-directory $tmpDir $tmpfname";
-        
-        $process    = new Process($cmd);
-        $process->run();
 
-        if (!$process->isSuccessful()) {
-            \Event::dispatch(new LatexPdfFailed($fileName, 'download', $this->metadata));
-            $this->parseError($tmpfname, $process);
+        $process    = new Process($cmd);
+
+        for ($i = 0; $i < $this->renderCount; $i++) {
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                \Event::dispatch(new LatexPdfFailed($fileName, 'download', $this->metadata));
+                $this->parseError($tmpfname, $process);
+            }
         }
 
         $this->teardown($tmpfname);

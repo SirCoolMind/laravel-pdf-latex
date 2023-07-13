@@ -1,5 +1,5 @@
 {
-    "name": "SirCoolMind/laravel-pdf-latex-new",
+    "name": "sircoolmind/laravel-pdf-latex-new",
     "description": "A latex package for laravel to generate pdfs. Credit to original author and programmer responsible for latest feature",
     "license": "MIT",
     "authors": [

@@ -1,6 +1,6 @@
 {
-    "name": "zsgsdesign/laravel-pdf-latex",
-    "description": "A latex package for laravel to generate pdfs",
+    "name": "SirCoolMind/laravel-pdf-latex-new",
+    "description": "A latex package for laravel to generate pdfs. Credit to original author and programmer responsible for latest feature",
     "license": "MIT",
     "authors": [
         {

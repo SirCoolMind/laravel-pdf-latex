@@ -1,11 +1,11 @@
 <?php
 
-namespace ZsgsDesign\PDFConverter;
+namespace SirCoolMind\PDFConverter;
 
-use ZsgsDesign\PDFConverter\LatextException;
-use ZsgsDesign\PDFConverter\LatexPdfWasGenerated;
-use ZsgsDesign\PDFConverter\LatexPdfFailed;
-use ZsgsDesign\PDFConverter\ViewNotFoundException;
+use SirCoolMind\PDFConverter\LatextException;
+use SirCoolMind\PDFConverter\LatexPdfWasGenerated;
+use SirCoolMind\PDFConverter\LatexPdfFailed;
+use SirCoolMind\PDFConverter\ViewNotFoundException;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Str;
 

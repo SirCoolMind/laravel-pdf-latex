@@ -1,6 +1,6 @@
 <?php
 
-namespace ZsgsDesign\PDFConverter;
+namespace SirCoolMind\PDFConverter;
 
 class RawTex
 {

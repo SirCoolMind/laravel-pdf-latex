@@ -1,12 +1,12 @@
 <?php
 
-namespace ZsgsDesign\PDFConverter;
+namespace SirCoolMind\PDFConverter;
 
 use Symfony\Component\Process\Process;
-use ZsgsDesign\PDFConverter\Latex;
-use ZsgsDesign\PDFConverter\LatextEmptyCollectionException;
-use ZsgsDesign\PDFConverter\LatextException;
-use ZsgsDesign\PDFConverter\LatextZipFailedException;
+use SirCoolMind\PDFConverter\Latex;
+use SirCoolMind\PDFConverter\LatextEmptyCollectionException;
+use SirCoolMind\PDFConverter\LatextException;
+use SirCoolMind\PDFConverter\LatextZipFailedException;
 use Illuminate\Support\Str;
 
 class LatexCollection

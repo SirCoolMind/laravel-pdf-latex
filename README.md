@@ -25,7 +25,7 @@ The different is :
 ## Installation : 
 
 ~~~bash
-composer require zsgsdesign/laravel-pdf-latex
+composer require sircoolmind/laravel-pdf-latex-new
 ~~~
 
 ## Dry Run : 

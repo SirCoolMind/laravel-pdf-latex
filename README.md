@@ -1,4 +1,4 @@
-# A laravel package to generate pdfs using latex
+                    # A laravel package to generate pdfs using latex
 
 <p align="center">
     <img alt="Laravel" src="laravel-logo.png" width="250">
@@ -12,6 +12,39 @@ The reason to choose LaTex is that, it has extensive features inbuilt have heade
 This package makes entire scaffolding using which you can generate, save or download PDF documents.
 
 ## Pre-requisites : 
+
+1. Latex dependency setup inside server/vagrant
+~~~bash
+sudo apt install texlive-full
+~~~
+2. Latex package manager setup
+~~~bash
+tlmgr init-usertree
+tlmgr option repository ctan
+
+tlmgr repository add ftp://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2019/tlnet-final
+tlmgr repository list
+tlmgr repository remove http://mirror.ctan.org/systems/texlive/tlnet
+tlmgr option repository ftp://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2019/tlnet-final
+
+tlmgr --verify-repo=none install dirtree
+tlmgr --verify-repo=none install fontsize
+~~~
+
+## Below code for IMT Tech Sdn Bhd company
+Require two independent files, IMTTechReports.cls dan logo.png.
+Can ask hafiz.
+~~~bash
+kpsewhich -var-value TEXMFHOME
+~~~
+## will return value path of texmf
+## replace value that received above inside command below accordingly
+~~~bash
+sudo mkdir /vagrant/home/texmf/tex/latex/imttech
+sudo cp IMTTechReports.cls /home/vagrant/texmf/tex/latex/imttech/
+sudo mkdir /vagrant/home/texmf/tex/latex/imttech/images
+sudo cp th_logo.png /home/vagrant/texmf/tex/latex/imttech/images
+~~~
 
 You need to have `texlive-full` program installed on your server. This program has tex packages and language libraries which help you generate documents.
 

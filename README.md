@@ -1,7 +1,8 @@
-                    # A laravel package to generate pdfs using latex
+# Laravel Latex Package For Laravel 5
 
-<p align="center">
+<p>
     <img alt="Laravel" src="laravel-logo.png" width="250">
+    &nbsp;&nbsp;
     <img alt="LaTex" src="latex-logo.svg" width="250">
 </p>
 
@@ -13,11 +14,19 @@ This package makes entire scaffolding using which you can generate, save or down
 
 ## Pre-requisites : 
 
-1. Latex dependency setup inside server/vagrant
+You need to have `texlive-full` program installed on your server. This program has tex packages and language libraries which help you generate documents.
+
+Note : You can also opt to install `textlive` which is the lighter and primitive version of the package where as `texlive-full` contains all package bundles. 
+
+The different is : 
+    - When you install `textlive` and want to use any additional tex package, you need to install it manually. 
+    - `texlive-full` comes with these extra packages. As a result it may take up some additional space on server (to store the package library files).
+
+### 1. Latex dependency setup inside server/vagrant
 ~~~bash
 sudo apt install texlive-full
 ~~~
-2. Latex package manager setup
+### 2. Latex package manager setup
 ~~~bash
 tlmgr init-usertree
 tlmgr option repository ctan
@@ -31,29 +40,39 @@ tlmgr --verify-repo=none install dirtree
 tlmgr --verify-repo=none install fontsize
 ~~~
 
-## Below code for IMT Tech Sdn Bhd company
+If encounter error tlnet-final not found, it could be your OS version is up-to-date. You may tried to update the year into  2021 inside the URL.
+
+~~~bash
+tlmgr repository add ftp://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2021/tlnet-final
+tlmgr repository list
+tlmgr repository remove http://mirror.ctan.org/systems/texlive/tlnet
+tlmgr option repository ftp://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2021/tlnet-final
+~~~
+
+## Below command is for IMT Tech Sdn Bhd staff and Laravel 5
 Require two independent files, IMTTechReports.cls dan logo.png.
-Can ask hafiz.
+Can ask Hafiz or Kak Ija.
+
+### Return value of Texlive path
 ~~~bash
 kpsewhich -var-value TEXMFHOME
 ~~~
-## will return value path of texmf
-## replace value that received above inside command below accordingly
+
+### Replace %path% with value above
+~~~bash
+sudo mkdir %path%/tex/latex/imttech
+sudo cp IMTTechReports.cls %path%/tex/latex/imttech/
+sudo mkdir %path%/tex/latex/imttech/images
+sudo cp th_logo.png %path%/tex/latex/imttech/images
+~~~
+
+Original:
 ~~~bash
 sudo mkdir /vagrant/home/texmf/tex/latex/imttech
 sudo cp IMTTechReports.cls /home/vagrant/texmf/tex/latex/imttech/
 sudo mkdir /vagrant/home/texmf/tex/latex/imttech/images
 sudo cp th_logo.png /home/vagrant/texmf/tex/latex/imttech/images
 ~~~
-
-You need to have `texlive-full` program installed on your server. This program has tex packages and language libraries which help you generate documents.
-
-Note : You can also opt to install `textlive` which is the lighter and primitive version of the package where as `texlive-full` contains all package bundles. 
-
-The different is : 
-    - When you install `textlive` and want to use any additional tex package, you need to install it manually. 
-    - `texlive-full` comes with these extra packages. As a result it may take up some additional space on server (to store the package library files).
-
 
 ## Installation : 
 
@@ -379,4 +398,4 @@ Please feel free to contribute if you want to add new functionalities to this pa
 
 ## License : 
 
-This psckage is open-sourced software licensed under the MIT license
+This package is open-sourced software licensed under the MIT license
